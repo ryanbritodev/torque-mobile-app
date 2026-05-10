@@ -242,11 +242,9 @@ npx expo start
 ## 👥 Integrantes
 
 | Nome | RM | 
-|---|---|---|
+|---|---|
 | Arthur Cotrick Pagani | RM554510 |
 | Diogo Leles Franciulli | RM558487 |
 | Felipe Sousa de Oliveira | RM559085 | 
 | Ryan Brito Pereira Ramos | RM554497 | 
 | Vitor Chaves | RM557067 | 
-
----
