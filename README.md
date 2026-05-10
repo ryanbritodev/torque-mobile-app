@@ -19,7 +19,7 @@ _Challenge Ford + FIAP 2026 | Mobile Development & IoT_
 
 ---
 
-## 📋 Sumário
+## Sumário
 
 - [Sobre o Projeto](#-sobre-o-projeto)
 - [Contexto e Problema](#-contexto-e-problema)
@@ -43,7 +43,7 @@ O app consome dados da **API pública da NHTSA** para exibir recalls ativos, his
 
 ---
 
-## 🎯 Contexto e Problema
+## Contexto e Problema
 
 O VIN Share mede a proporção de serviços de um veículo realizados dentro da rede autorizada Ford. Uma queda nesse indicador sinaliza que o cliente está migrando para oficinas independentes — um problema crítico de pós-venda que resulta em:
 
@@ -56,7 +56,7 @@ O Torque endereça esse problema oferecendo **visibilidade em tempo real** e **g
 
 ---
 
-## 📱 Funcionalidades
+## Funcionalidades
 
 ### Dashboard
 Visão executiva com os principais KPIs da concessionária:
@@ -97,7 +97,7 @@ Ficha completa do veículo:
 
 ---
 
-## 🏗️ Arquitetura e Fluxo
+## Arquitetura e Fluxo
 
 ```
 ┌──────────────────────────────────────────────────────┐
@@ -125,7 +125,7 @@ O app usa **Expo Router v4** com navegação baseada em arquivos. A camada de se
 
 ---
 
-## 🧰 Tecnologias
+## Tecnologias
 
 | Tecnologia | Versão | Uso |
 |---|---|---|
@@ -143,7 +143,7 @@ O app usa **Expo Router v4** com navegação baseada em arquivos. A camada de se
 
 ---
 
-## 🌐 API Externa Consumida
+## API Externa Consumida
 
 ### NHTSA — National Highway Traffic Safety Administration
 
@@ -161,7 +161,7 @@ A API NHTSA é pública, gratuita e não requer autenticação. Documentação c
 
 ---
 
-## 🗂️ Estrutura do Projeto
+## Estrutura do Projeto
 
 ```
 torque/
@@ -196,7 +196,7 @@ torque/
 
 ---
 
-## 🚀 Como Rodar
+## Como Rodar
 
 ### Pré-requisitos
 
@@ -235,11 +235,11 @@ npx expo start
 | **iOS (simulador Mac)** | Pressione `i` no terminal |
 | **Web (browser)** | Pressione `w` no terminal |
 
-> ⚠️ Para celular físico, certifique-se que o dispositivo está na **mesma rede Wi-Fi** que o computador.
+> Para celular físico, certifique-se que o dispositivo está na **mesma rede Wi-Fi** que o computador.
 
 ---
 
-## 👥 Integrantes
+## Integrantes
 
 | Nome | RM | 
 |---|---|
