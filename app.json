@@ -1,0 +1,16 @@
+{
+  "expo": {
+    "name": "Torque",
+    "slug": "torque",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
+    "scheme": "torque",
+    "splash": { "backgroundColor": "#003478" },
+    "ios": { "supportsTablet": true, "bundleIdentifier": "com.ford.torque" },
+    "android": { "adaptiveIcon": { "backgroundColor": "#003478" }, "package": "com.ford.torque" },
+    "web": { "bundler": "metro", "output": "static" },
+    "plugins": ["expo-router", "expo-font"],
+    "experiments": { "typedRoutes": true }
+  }
+}

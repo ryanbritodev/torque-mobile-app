@@ -1,0 +1,16 @@
+export const Colors = {
+  fordBlue:      '#003478',
+  fordLightBlue: '#1C6BBA',
+  fordSkyBlue:   '#00ADEF',
+  white:  '#FFFFFF',
+  black:  '#0A0A0A',
+  gray100:'#F4F6FA',
+  gray200:'#E8EAEE',
+  gray300:'#C8CDD8',
+  gray500:'#8892A4',
+  gray700:'#3D4A5C',
+  success:'#00A86B',
+  warning:'#F5A623',
+  danger: '#E53935',
+  tabBar: '#002B63',
+};
