@@ -35,7 +35,7 @@ _Challenge Ford + FIAP 2026 | Mobile Development & IoT_
 
 ---
 
-## 🚗 Sobre o Projeto
+## Sobre o Projeto
 
 O **Torque** é um aplicativo mobile desenvolvido para concessionárias e gerentes de pós-venda Ford. Ele centraliza indicadores de **VIN Share** (participação de serviços por veículo), gestão de frota e leads preditivos em uma única interface, permitindo que as equipes atuem proativamente na retenção de clientes antes que eles levem seus veículos à concorrência.
 
