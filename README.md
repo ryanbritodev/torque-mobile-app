@@ -13,7 +13,7 @@
 [![NHTSA API](https://img.shields.io/badge/API-NHTSA-003478?style=flat-square)](https://api.nhtsa.gov/)
 [![FIAP](https://img.shields.io/badge/Challenge-Ford_+_FIAP_2026-ED1C24?style=flat-square)](https://www.fiap.com.br/)
 
-> Challenge Ford + FIAP 2026 | Mobile Development & IoT
+_Challenge Ford + FIAP 2026 | Mobile Development & IoT_
 
 </div>
 
