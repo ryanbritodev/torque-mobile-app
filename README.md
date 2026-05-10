@@ -1,71 +1,163 @@
-# 🔧 Torque — Ford VIN Share App
-> Projeto Ford + FIAP 2026 | Mobile Development & IoT
-> Solução para monitoramento de VIN Share e retenção de clientes no pós-venda
+<div align="center">
 
-![Tela inicial do Torque](assets/images/homepage.png)
+<img src="https://github.com/ryanbritodev/torque-mobile-app/raw/main/assets/images/homepage.png" alt="Torque App" width="280"/>
+
+# 🔧 Torque — Ford VIN Share App
+
+**Solução mobile para monitoramento de VIN Share e retenção de clientes no pós-venda Ford**
+
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.3-3178C6?style=flat-square&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![React Native](https://img.shields.io/badge/React_Native-0.76-61DAFB?style=flat-square&logo=react&logoColor=black)](https://reactnative.dev/)
+[![Expo](https://img.shields.io/badge/Expo_SDK-52-000020?style=flat-square&logo=expo&logoColor=white)](https://expo.dev/)
+[![Expo Router](https://img.shields.io/badge/Expo_Router-v4-000020?style=flat-square&logo=expo&logoColor=white)](https://expo.github.io/router/)
+[![NHTSA API](https://img.shields.io/badge/API-NHTSA-003478?style=flat-square)](https://api.nhtsa.gov/)
+[![FIAP](https://img.shields.io/badge/Challenge-Ford_+_FIAP_2026-ED1C24?style=flat-square)](https://www.fiap.com.br/)
+
+> Challenge Ford + FIAP 2026 | Mobile Development & IoT
+
+</div>
+
+---
+
+## 📋 Sumário
+
+- [Sobre o Projeto](#-sobre-o-projeto)
+- [Contexto e Problema](#-contexto-e-problema)
+- [Funcionalidades](#-funcionalidades)
+- [Arquitetura e Fluxo](#-arquitetura-e-fluxo)
+- [Tecnologias](#-tecnologias)
+- [API Externa](#-api-externa-consumida)
+- [Estrutura do Projeto](#️-estrutura-do-projeto)
+- [Identidade Visual Ford](#-identidade-visual-ford)
+- [Como Rodar](#-como-rodar)
+- [Solução de Problemas](#️-solução-de-problemas)
+- [Integrantes](#-integrantes)
+
+---
+
+## 🚗 Sobre o Projeto
+
+O **Torque** é um aplicativo mobile desenvolvido para concessionárias e gerentes de pós-venda Ford. Ele centraliza indicadores de **VIN Share** (participação de serviços por veículo), gestão de frota e leads preditivos em uma única interface, permitindo que as equipes atuem proativamente na retenção de clientes antes que eles levem seus veículos à concorrência.
+
+O app consome dados da **API pública da NHTSA** para exibir recalls ativos, histórico de revisões e decodificação de VIN em tempo real, conectando informações técnicas do veículo diretamente com o fluxo comercial da concessionária.
+
+---
+
+## 🎯 Contexto e Problema
+
+O VIN Share mede a proporção de serviços de um veículo realizados dentro da rede autorizada Ford. Uma queda nesse indicador sinaliza que o cliente está migrando para oficinas independentes — um problema crítico de pós-venda que resulta em:
+
+- **Perda de receita** recorrente de revisões e peças originais
+- **Ruptura do relacionamento** com o cliente
+- **Menor rastreabilidade** do histórico do veículo
+- **Recall não atendidos** por falta de contato ativo
+
+O Torque endereça esse problema oferecendo **visibilidade em tempo real** e **geração automática de leads** para veículos com risco de abandono da rede.
 
 ---
 
 ## 📱 Funcionalidades
 
-- **Dashboard** — VIN Share em tempo real, receita, frota ativa, leads abertos
-- **Frota** — Lista de veículos com busca, filtros e score de risco
-- **Leads** — Leads preditivos com ação rápida (ligar / WhatsApp)
-- **Alertas** — Notificações de recalls, revisões e riscos
-- **Detalhe do Veículo** — Histórico, garantia, recalls via API NHTSA
+### Dashboard
+Visão executiva com os principais KPIs da concessionária:
+- VIN Share atual e variação percentual
+- Receita do período com tendência
+- Contagem de frota ativa monitorada
+- Leads em aberto aguardando ação
+- Mini gráficos de evolução histórica por métrica
 
-## 🌐 API Externa Consumida
+### Frota
+Gestão completa dos veículos cadastrados:
+- Listagem com busca por placa, modelo ou proprietário
+- Filtros por status (em dia, revisão próxima, risco de abandono)
+- **Score de risco** calculado por tempo desde a última visita
+- Acesso rápido ao detalhe de cada veículo
 
-**NHTSA (National Highway Traffic Safety Administration)**
-- `GET /recalls/recallsByVIN?vin={vin}` — recalls por VIN
-- `GET /recalls/recallsByVehicle?make=Ford&model=...` — recalls por modelo
-- `GET /vehicles/decodevin/{vin}` — decodificação de VIN
-- **Docs:** https://api.nhtsa.gov
+### Leads Preditivos
+Motor de priorização de contatos:
+- Leads gerados automaticamente por algoritmo de risco
+- Classificação por urgência (alta / média / baixa)
+- **Ação direta**: ligar ou abrir WhatsApp com um toque
+- Histórico de tentativas de contato
+
+### Alertas e Notificações
+Central de avisos críticos:
+- Recalls ativos por VIN (dados NHTSA em tempo real)
+- Alertas de revisão programada vencida
+- Notificações de garantia próxima do vencimento
+- Avisos de risco calculado de perda do cliente
+
+### Detalhe do Veículo
+Ficha completa do veículo:
+- Dados técnicos via decodificação do VIN
+- Histórico de serviços na rede
+- Status de recalls ativos e pendentes
+- Informações de garantia (original e estendida)
+- Próximas revisões recomendadas
 
 ---
 
-## 🚀 Como Rodar
+## 🏗️ Arquitetura e Fluxo
 
-### Pré-requisitos
+```
+┌──────────────────────────────────────────────────────┐
+│                    Torque App                        │
+│                                                      │
+│  ┌─────────┐  ┌────────┐  ┌────────┐  ┌──────────┐ │
+│  │Dashboard│  │ Frota  │  │ Leads  │  │ Alertas  │ │
+│  └────┬────┘  └───┬────┘  └───┬────┘  └────┬─────┘ │
+│       │           │           │             │        │
+│       └───────────┴─────┬─────┴─────────────┘        │
+│                         │                             │
+│               ┌─────────▼──────────┐                 │
+│               │   services/api.ts  │                 │
+│               │  services/mock.ts  │                 │
+│               └─────────┬──────────┘                 │
+└─────────────────────────┼────────────────────────────┘
+                          │
+              ┌───────────▼───────────┐
+              │     NHTSA Public API  │
+              │    api.nhtsa.gov      │
+              └───────────────────────┘
+```
 
-| Ferramenta | Versão mínima |
+O app usa **Expo Router v4** com navegação baseada em arquivos. A camada de serviços abstrai chamadas à API NHTSA e os dados simulados (`mockData.ts`), tornando simples a substituição futura por uma API interna Ford.
+
+---
+
+## 🧰 Tecnologias
+
+| Tecnologia | Versão | Uso |
+|---|---|---|
+| React Native | 0.76.9 | Framework mobile |
+| Expo SDK | ~52.0.0 | Plataforma e tooling |
+| Expo Router | ~4.0.0 | Navegação file-based |
+| TypeScript | ^5.3.3 | Tipagem estática |
+| React | 18.3.1 | Biblioteca de UI |
+| expo-notifications | ~0.29.0 | Push notifications |
+| expo-font | ~13.0.0 | Fontes customizadas |
+| react-native-svg | ^15.15.4 | Gráficos vetoriais |
+| react-native-screens | ^4.24.0 | Otimização de navegação |
+| react-native-safe-area-context | ^5.7.0 | Safe area handling |
+| @expo/vector-icons (Ionicons) | via Expo | Ícones |
+
+---
+
+## 🌐 API Externa Consumida
+
+### NHTSA — National Highway Traffic Safety Administration
+
+Base URL: `https://api.nhtsa.gov`
+
+| Endpoint | Descrição |
 |---|---|
-| Node.js | 18.x ou superior |
-| npm | 9.x ou superior |
-| Expo CLI | instalado globalmente |
-| App Expo Go | iOS ou Android |
+| `GET /recalls/recallsByVIN?vin={vin}` | Recalls ativos para um VIN específico |
+| `GET /recalls/recallsByVehicle?make=Ford&model={model}&modelYear={year}` | Recalls por modelo e ano |
+| `GET /vehicles/decodevin/{vin}` | Decodificação completa do VIN (fabricante, modelo, motor, etc.) |
 
-### 1. Instalar o Expo CLI (se não tiver)
+A API NHTSA é pública, gratuita e não requer autenticação. Documentação completa em [api.nhtsa.gov](https://api.nhtsa.gov).
 
-```bash
-npm install -g expo-cli
-```
-
-### 2. Clonar / Extrair o projeto
-
-```bash
-# Extraia o ZIP e entre na pasta
-cd torque
-```
-
-### 3. Instalar dependências
-
-```bash
-npm install
-```
-
-### 4. Iniciar o servidor de desenvolvimento
-
-```bash
-npx expo start
-```
-
-### 5. Abrir no dispositivo
-
-- **Celular físico:** Abra o app **Expo Go** e escaneie o QR Code exibido no terminal
-- **Android (emulador):** Pressione `a` no terminal
-- **iOS (simulador Mac):** Pressione `i` no terminal
-- **Web (browser):** Pressione `w` no terminal
+> **Nota:** Os dados de frota, leads e métricas de VIN Share são simulados via `services/mockData.ts`, representando a integração futura com sistemas internos da Ford (ex: FordDirect, DMS da concessionária).
 
 ---
 
@@ -77,62 +169,144 @@ torque/
 │   ├── _layout.tsx              # Layout raiz (Stack Navigator)
 │   ├── vehicle-detail.tsx       # Tela de detalhe do veículo
 │   └── (tabs)/
-│       ├── _layout.tsx          # Tab Navigator
+│       ├── _layout.tsx          # Tab Navigator com identidade Ford
 │       ├── index.tsx            # Dashboard (VIN Share, métricas)
 │       ├── vehicles.tsx         # Frota com busca e filtros
 │       ├── leads.tsx            # Leads preditivos
 │       └── notifications.tsx    # Central de alertas
 ├── components/
-│   ├── MetricCard.tsx           # Card de métrica
-│   ├── MiniBarChart.tsx         # Mini gráfico de barras
-│   ├── VehicleCard.tsx          # Card de veículo
-│   └── LeadCard.tsx             # Card de lead com ações
+│   ├── MetricCard.tsx           # Card de KPI com mini gráfico
+│   ├── MiniBarChart.tsx         # Gráfico de barras inline (SVG)
+│   ├── VehicleCard.tsx          # Card de veículo com score de risco
+│   └── LeadCard.tsx             # Card de lead com ações (ligar/WhatsApp)
 ├── constants/
-│   └── Colors.ts                # Paleta Ford
+│   └── Colors.ts                # Paleta de cores Ford
 ├── services/
-│   ├── api.ts                   # Integração NHTSA API
-│   └── mockData.ts              # Dados simulados
+│   ├── api.ts                   # Integração com NHTSA API
+│   └── mockData.ts              # Dados simulados (frota, leads, métricas)
 ├── types/
-│   └── index.ts                 # Tipos TypeScript
-└── app.json                     # Configuração Expo
+│   └── index.ts                 # Tipos TypeScript globais
+├── assets/
+│   └── images/                  # Imagens e ícones
+├── app.json                     # Configuração Expo (nome, ícone, splash)
+├── babel.config.js              # Configuração Babel
+├── tsconfig.json                # Configuração TypeScript
+└── package.json                 # Dependências e scripts
 ```
 
 ---
 
 ## 🎨 Identidade Visual Ford
 
-| Token | Valor | Uso |
+O app segue rigorosamente o guia de marca Ford, com tokens de cor aplicados de forma consistente em toda a interface.
+
+| Token | Hex | Preview | Uso principal |
+|---|---|---|---|
+| Ford Blue | `#003478` | ![#003478](https://placehold.co/16x16/003478/003478.png) | Header, cor primária, botões |
+| Ford Light Blue | `#1C6BBA` | ![#1C6BBA](https://placehold.co/16x16/1C6BBA/1C6BBA.png) | Acentos, estados hover |
+| Ford Sky Blue | `#00ADEF` | ![#00ADEF](https://placehold.co/16x16/00ADEF/00ADEF.png) | Tab ativo, destaques, badges |
+| Tab Bar | `#002B63` | ![#002B63](https://placehold.co/16x16/002B63/002B63.png) | Barra de navegação inferior |
+| Background | `#F4F6F8` | ![#F4F6F8](https://placehold.co/16x16/F4F6F8/F4F6F8.png) | Fundo de telas |
+| Risco Alto | `#E74C3C` | ![#E74C3C](https://placehold.co/16x16/E74C3C/E74C3C.png) | Score de risco crítico |
+| Risco Médio | `#F39C12` | ![#F39C12](https://placehold.co/16x16/F39C12/F39C12.png) | Score de risco moderado |
+| Risco Baixo | `#27AE60` | ![#27AE60](https://placehold.co/16x16/27AE60/27AE60.png) | Score de risco seguro |
+
+---
+
+## 🚀 Como Rodar
+
+### Pré-requisitos
+
+| Ferramenta | Versão mínima | Instalação |
 |---|---|---|
-| Ford Blue | `#003478` | Header, primário |
-| Ford Light Blue | `#1C6BBA` | Acentos |
-| Ford Sky Blue | `#00ADEF` | Tab ativo, destaques |
-| Tab Bar | `#002B63` | Barra de navegação |
+| Node.js | 18.x ou superior | [nodejs.org](https://nodejs.org/) |
+| npm | 9.x ou superior | Incluso no Node.js |
+| Git | qualquer | [git-scm.com](https://git-scm.com/) |
+| Expo Go | última versão | [iOS](https://apps.apple.com/app/expo-go/id982107779) / [Android](https://play.google.com/store/apps/details?id=host.exp.exponent) |
+
+### 1. Clonar o repositório
+
+```bash
+git clone https://github.com/ryanbritodev/torque-mobile-app.git
+cd torque-mobile-app
+```
+
+### 2. Instalar dependências
+
+```bash
+npm install
+```
+
+### 3. Iniciar o servidor de desenvolvimento
+
+```bash
+npx expo start
+```
+
+### 4. Abrir no dispositivo
+
+| Plataforma | Como abrir |
+|---|---|
+| **Celular físico** | Abra o **Expo Go** e escaneie o QR Code exibido no terminal |
+| **Android (emulador)** | Pressione `a` no terminal |
+| **iOS (simulador Mac)** | Pressione `i` no terminal |
+| **Web (browser)** | Pressione `w` no terminal |
+
+> ⚠️ Para celular físico, certifique-se que o dispositivo está na **mesma rede Wi-Fi** que o computador.
 
 ---
 
 ## ⚠️ Solução de Problemas
 
-**Erro `Unable to find expo in this project`**
+**`Unable to find expo in this project`**
 ```bash
 npm install expo
 npx expo start
 ```
 
-**Erro de metro bundler**
+**Erro de metro bundler / cache corrompido**
 ```bash
 npx expo start --clear
 ```
 
-**App não carrega no Expo Go**
-- Certifique-se que o celular está na mesma rede Wi-Fi que o computador
-- Tente usar `npx expo start --tunnel`
+**App não carrega no Expo Go (dispositivo físico)**
+```bash
+# Tente modo tunnel (funciona em redes restritas)
+npx expo start --tunnel
+```
+
+**Erro de dependências nativas**
+```bash
+npm install
+npx expo install --fix
+```
+
+**Erro de TypeScript na IDE**
+
+Certifique-se de que o `tsconfig.json` está na raiz do projeto e que sua IDE reconhece o `expo-env.d.ts` gerado automaticamente pelo Expo.
 
 ---
 
-## 📚 Tecnologias
+## 👥 Integrantes
 
-- **React Native** + **Expo SDK 52**
-- **Expo Router v4** (file-based navigation)
-- **TypeScript**
-- **@expo/vector-icons** (Ionicons)
-- **NHTSA Public API** (recalls e VIN decode)
+| Nome | RM | GitHub |
+|---|---|---|
+| Arthur Cotrick Pagani | RM554510 | — |
+| Diogo Leles Franciulli | RM558487 | — |
+| Felipe Sousa de Oliveira | RM559085 | — |
+| Ryan Brito Pereira Ramos | RM554497 | [@ryanbritodev](https://github.com/ryanbritodev) |
+| Vitor Chaves | RM557067 | — |
+
+---
+
+## 📄 Licença
+
+Este projeto foi desenvolvido para fins acadêmicos como parte do **Challenge Ford + FIAP 2026**. Todos os direitos reservados aos autores.
+
+---
+
+<div align="center">
+
+Feito com ❤️ por alunos da **FIAP** em parceria com a **Ford Brasil**
+
+</div>
