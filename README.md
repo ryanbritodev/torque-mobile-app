@@ -196,23 +196,6 @@ torque/
 
 ---
 
-## 🎨 Identidade Visual Ford
-
-O app segue rigorosamente o guia de marca Ford, com tokens de cor aplicados de forma consistente em toda a interface.
-
-| Token | Hex | Preview | Uso principal |
-|---|---|---|---|
-| Ford Blue | `#003478` | ![#003478](https://placehold.co/16x16/003478/003478.png) | Header, cor primária, botões |
-| Ford Light Blue | `#1C6BBA` | ![#1C6BBA](https://placehold.co/16x16/1C6BBA/1C6BBA.png) | Acentos, estados hover |
-| Ford Sky Blue | `#00ADEF` | ![#00ADEF](https://placehold.co/16x16/00ADEF/00ADEF.png) | Tab ativo, destaques, badges |
-| Tab Bar | `#002B63` | ![#002B63](https://placehold.co/16x16/002B63/002B63.png) | Barra de navegação inferior |
-| Background | `#F4F6F8` | ![#F4F6F8](https://placehold.co/16x16/F4F6F8/F4F6F8.png) | Fundo de telas |
-| Risco Alto | `#E74C3C` | ![#E74C3C](https://placehold.co/16x16/E74C3C/E74C3C.png) | Score de risco crítico |
-| Risco Médio | `#F39C12` | ![#F39C12](https://placehold.co/16x16/F39C12/F39C12.png) | Score de risco moderado |
-| Risco Baixo | `#27AE60` | ![#27AE60](https://placehold.co/16x16/27AE60/27AE60.png) | Score de risco seguro |
-
----
-
 ## 🚀 Como Rodar
 
 ### Pré-requisitos
@@ -256,57 +239,14 @@ npx expo start
 
 ---
 
-## ⚠️ Solução de Problemas
-
-**`Unable to find expo in this project`**
-```bash
-npm install expo
-npx expo start
-```
-
-**Erro de metro bundler / cache corrompido**
-```bash
-npx expo start --clear
-```
-
-**App não carrega no Expo Go (dispositivo físico)**
-```bash
-# Tente modo tunnel (funciona em redes restritas)
-npx expo start --tunnel
-```
-
-**Erro de dependências nativas**
-```bash
-npm install
-npx expo install --fix
-```
-
-**Erro de TypeScript na IDE**
-
-Certifique-se de que o `tsconfig.json` está na raiz do projeto e que sua IDE reconhece o `expo-env.d.ts` gerado automaticamente pelo Expo.
-
----
-
 ## 👥 Integrantes
 
-| Nome | RM | GitHub |
+| Nome | RM | 
 |---|---|---|
-| Arthur Cotrick Pagani | RM554510 | — |
-| Diogo Leles Franciulli | RM558487 | — |
-| Felipe Sousa de Oliveira | RM559085 | — |
-| Ryan Brito Pereira Ramos | RM554497 | [@ryanbritodev](https://github.com/ryanbritodev) |
-| Vitor Chaves | RM557067 | — |
+| Arthur Cotrick Pagani | RM554510 |
+| Diogo Leles Franciulli | RM558487 |
+| Felipe Sousa de Oliveira | RM559085 | 
+| Ryan Brito Pereira Ramos | RM554497 | 
+| Vitor Chaves | RM557067 | 
 
 ---
-
-## 📄 Licença
-
-Este projeto foi desenvolvido para fins acadêmicos como parte do **Challenge Ford + FIAP 2026**. Todos os direitos reservados aos autores.
-
----
-
-<div align="center">
-
-Feito com ❤️ por alunos da **FIAP** em parceria com a **Ford Brasil**
-
-</div>
