@@ -2,6 +2,8 @@
 > Projeto Ford + FIAP 2026 | Mobile Development & IoT
 > Solução para monitoramento de VIN Share e retenção de clientes no pós-venda
 
+![Tela inicial do Torque](assets/images/homepage.png)
+
 ---
 
 ## 📱 Funcionalidades
